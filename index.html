@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Techfusion - Museum Ticketing</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <img
+            src="https://i.ibb.co/54TbMN3/Screenshot-2024-09-12-181308.png"
+            alt="Techfusion Logo"
+            class="logo-img"
+          />
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Efficient Museum Ticketing with Techfusion</h1>
+        <p>
+          Our chatbot-based system revolutionizes the way visitors purchase
+          tickets, ensuring a seamless experience.
+        </p>
+        <a href="#" class="btn-primary" id="chat-btn">Chat with Pathdarshan</a>
+      </div>
+    </section>
+
+    <!-- Chatbot iframe/container (initially hidden) -->
+    <div id="chat-container" style="display: none"></div>
+
+    <!-- JavaScript for handling the button click -->
+    <script>
+      document
+        .getElementById("chat-btn")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+
+          if (!document.getElementById("chatbot-script")) {
+            let script = document.createElement("script");
+            script.id = "chatbot-script";
+            script.src =
+              "https://app.wotnot.io/chat-widget/PrEkkrwdAJJe181722904028KtfvfWIf.js";
+            script.defer = true;
+            document.body.appendChild(script);
+
+            document.getElementById("chat-btn").innerText = "Loading Chat...";
+
+            script.onload = function () {
+              document.getElementById("chat-container").style.display = "block";
+              document.getElementById("chat-btn").innerText =
+                "Chat with Pathdarshan";
+            };
+          } else {
+            document.getElementById("chat-container").style.display = "block";
+          }
+        });
+    </script>
+  </body>
+</html>
